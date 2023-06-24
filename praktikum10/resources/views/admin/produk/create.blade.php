@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="stok" class="col-4 col-form-label">Stok</label>
+            <label for="stok" class="col-4 col-form-label">stok</label>
             <div class="col-8">
                 <input id="stok" name="stok" type="text" class="form-control">
             </div>
