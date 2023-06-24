@@ -20,7 +20,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     
                                     <a class="nav-link" href="kategori_produk">Kategori Produk</a>
-                                    <a class="nav-link" href="produk">Kumpulan Produk</a>
+                                    <a class="nav-link" href="produk">Kumpulan produk</a>
 
                                 </nav>
                             </div>
