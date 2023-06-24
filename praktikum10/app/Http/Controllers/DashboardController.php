@@ -13,6 +13,10 @@ class DashboardController extends Controller
     {
         return view('admin.dashboard');
     }
+    public function index5()
+    {
+        return view('admin.dashboard');
+    }
 
     /**
      * Show the form for creating a new resource.

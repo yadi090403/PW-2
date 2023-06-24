@@ -14,7 +14,8 @@ class KategoriProduk extends Model
 
     // bikin kolom yang bisa diisi
     protected $fillable = [
-        'nama',
+        'no', // no kategori produk
+        'nama', // nama kategori produk
     ];
 
     // bikin fungsi produk untuk relasi has many

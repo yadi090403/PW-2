@@ -1,5 +1,6 @@
 @extends('admin.layout.appadmin')
 @section('content')
+@if (Auth::user()->role != 'pelanggan')
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -7,21 +8,20 @@
     @endif
     <h1 class="mt-4">Tables</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ '/' }}">Dashboard</a></li>
         <li class="breadcrumb-item active">Tables</li>
     </ol>
     <div class="card mb-4">
         <div class="card-body">
-            DataTables is a third party plugin that is used to generate the demo table below. For more information about
-            DataTables, please visit the
             <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-            .
         </div>
     </div>
     <div class="card mb-4">
         {{-- Bikin button create --}}
         <div class="card-header">
-            <a class="btn btn-primary" href="{{ url('produk/create') }}">Create</a>
+            @if (Auth::user()->role == 'admin')
+                <a class="btn btn-primary" href="{{ url('produk/create') }}">Create</a>
+            @endif
         </div>
         <div class="card-body">
             <table id="datatablesSimple">
@@ -71,8 +71,12 @@
                                 {{-- Buat tombol edit --}}
                                 <a href="{{ url('produk/edit/' . $p->id) }}" class="btn btn-warning">Edit</a>
                                 {{-- Buat tombol delete --}}
-                                <a href="{{ url('produk/delete/' . $p->id) }}" class="btn btn-danger"
-                                    onclick="return confirm('Apakah ingin hapus produk?')">Delete</a>
+                                {{-- Kedua:Batasitomboldeletehanyauntukadmin --}}
+
+                                @if (Auth::user()->role == 'admin')
+                                    <a href="{{ url('produk/delete/' . $p->id) }}" class="btn btn-danger"
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus produk?')">Delete</a>
+                                @endif
                             </td>
                         </tr>
                         @php $no++; @endphp
@@ -82,4 +86,7 @@
             </table>
         </div>
     </div>
+    @else
+        @include('admin.access_denied')
+    @endif
 @endsection

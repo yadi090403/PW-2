@@ -15,13 +15,14 @@ class ProdukController extends Controller
     {
         // ambil data produk dari database
         // gabungin tabelnya
-        // $produk = Produk::join('kategori_produk', 'produk.kategori_produk_id', '=', 'kategori_produk.id')
-        //     // tampilin data
-        //     ->select('produk.*', 'kategori_produk.nama as nama_kategori')
-        //     ->get();
+        $produk = Produk::join('kategori_produk', 'produk.kategori_produk_id', '=', 'kategori_produk.id')
+            // tampilin data
+            ->select('produk.*', 'kategori_produk.nama as nama_kategori')
+            ->get();
 
-        // // kirim data ke view
-        // return view('admin.produk.produk', compact('produk'));
+        // kirim data ke view
+        return view('admin.produk.produk', compact('produk'));
+
         $produk = Produk::getAllProduk();
 
         // kirim data ke view
